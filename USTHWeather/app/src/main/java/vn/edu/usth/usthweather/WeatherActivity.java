@@ -19,10 +19,18 @@ public class WeatherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_weather);
 
         if (savedInstanceState == null) {
+            WeatherFragment weatherFragment = new WeatherFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .add(R.id.parent_of_weather, weatherFragment)
+                    .commit();
+        }
+
+        if (savedInstanceState == null) {
             ForecastFragment firstFragment = new ForecastFragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
-                    .add(R.id.container, firstFragment)
+                    .add(R.id.parent_of_forecast, firstFragment)
                     .commit();
         }
         Log.i(TAG, "onCreate");
