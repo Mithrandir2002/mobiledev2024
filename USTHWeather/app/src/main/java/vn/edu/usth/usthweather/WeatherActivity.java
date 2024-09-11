@@ -9,6 +9,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 public class WeatherActivity extends AppCompatActivity {
     private static final String TAG = "Weather Activity";
@@ -17,52 +21,12 @@ public class WeatherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
-
-        if (savedInstanceState == null) {
-            WeatherFragment weatherFragment = new WeatherFragment();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .add(R.id.parent_of_weather, weatherFragment)
-                    .commit();
-        }
-
-        if (savedInstanceState == null) {
-            ForecastFragment firstFragment = new ForecastFragment();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .add(R.id.parent_of_forecast, firstFragment)
-                    .commit();
-        }
-        Log.i(TAG, "onCreate");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i(TAG, "onStop");
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.i(TAG, "onStart");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i(TAG, "onDestroy");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i(TAG, "onPause");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i(TAG, "onResume");
+        WeatherAndForecastFragmentPagerAdapter adapter = new WeatherAndForecastFragmentPagerAdapter(this);
+        adapter.addFragment(new WeatherAndForecastFragment(), "Hanoi");
+        adapter.addFragment(new WeatherAndForecastFragment(), "Paris");
+        adapter.addFragment(new WeatherAndForecastFragment(), "Toulouse");
+        ViewPager2 viewPager = findViewById(R.id.view_pager);
+        viewPager.setOffscreenPageLimit(3);
+        viewPager.setAdapter(adapter);
     }
 }
