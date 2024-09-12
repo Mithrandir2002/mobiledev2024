@@ -14,6 +14,9 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+
 public class WeatherActivity extends AppCompatActivity {
     private static final String TAG = "Weather Activity";
 
@@ -21,12 +24,19 @@ public class WeatherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
+
         WeatherAndForecastFragmentPagerAdapter adapter = new WeatherAndForecastFragmentPagerAdapter(this);
         adapter.addFragment(new WeatherAndForecastFragment(), "Hanoi");
         adapter.addFragment(new WeatherAndForecastFragment(), "Paris");
         adapter.addFragment(new WeatherAndForecastFragment(), "Toulouse");
+
         ViewPager2 viewPager = findViewById(R.id.view_pager);
         viewPager.setOffscreenPageLimit(3);
         viewPager.setAdapter(adapter);
+
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        new TabLayoutMediator(tabLayout, viewPager, ((tab, position) -> {
+            tab.setText(adapter.getTitle(position));
+        })).attach();
     }
 }
