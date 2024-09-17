@@ -26,9 +26,9 @@ public class WeatherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_weather);
 
         WeatherAndForecastFragmentPagerAdapter adapter = new WeatherAndForecastFragmentPagerAdapter(this);
-        adapter.addFragment(new WeatherAndForecastFragment(), "Hanoi");
-        adapter.addFragment(new WeatherAndForecastFragment(), "Paris");
-        adapter.addFragment(new WeatherAndForecastFragment(), "Toulouse");
+        adapter.addFragment(new WeatherAndForecastFragment(), getApplicationContext().getString(R.string.location_1));
+        adapter.addFragment(new WeatherAndForecastFragment(), getApplicationContext().getString(R.string.location_2));
+        adapter.addFragment(new WeatherAndForecastFragment(), getApplicationContext().getString(R.string.location_3));
 
         ViewPager2 viewPager = findViewById(R.id.view_pager);
         viewPager.setOffscreenPageLimit(3);

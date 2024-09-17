@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="temp_font_size">24sp</dimen>
+    <dimen name="weather_condition_font_size">18sp</dimen>
+    <dimen name="temp_and_weather_condition_padding">16sp</dimen>
+</resources>

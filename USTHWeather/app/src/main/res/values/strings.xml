@@ -2,4 +2,30 @@
     <string name="app_name">USTH Weather</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="location_1">Hanoi</string>
+    <string name="location_2">Paris</string>
+    <string name="location_3">Toulouse</string>
+    <string name="temperature">22C</string>
+    <string name="weather_condition">Cloudy</string>
+    <string name="monday">Mon</string>
+    <string name="monday_weather_condition">Partly Cloudy</string>
+    <string name="monday_temp_interval">24C - 30C</string>
+    <string name="tuesday">Tue</string>
+    <string name="tuesday_weather_condition">Shower</string>
+    <string name="tuesday_temp_interval">24C - 31C</string>
+    <string name="wednesday">Wed</string>
+    <string name="wednesday_weather_condition">Rainy</string>
+    <string name="wednesday_temp_interval">22C - 23C</string>
+    <string name="thursday">Thu</string>
+    <string name="thursday_weather_condition">Scattered Showers</string>
+    <string name="thursday_temp_interval">24C - 27C</string>
+    <string name="friday">Fri</string>
+    <string name="friday_weather_condition">Mostly Cloudy</string>
+    <string name="friday_temp_interval">22C - 30C</string>
+    <string name="saturday">Sat</string>
+    <string name="saturday_weather_condition">Sunny</string>
+    <string name="saturday_temp_interval">30C - 34C</string>
+    <string name="sunday">Sun</string>
+    <string name="sunday_weather_condition">Partly Cloudy</string>
+    <string name="sunday_temp_interval">24C - 31C</string>
 </resources>

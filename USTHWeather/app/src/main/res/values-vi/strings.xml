@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">USTH Thời Tiết</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="location_1">Hà Nội</string>
+    <string name="location_2">Pa-ghi</string>
+    <string name="location_3">Tu-lu-sơ</string>
+    <string name="hello_blank_fragment">Xin chào fragment trống</string>
+    <string name="temperature">22 độ</string>
+    <string name="weather_condition">Nhiều mây</string>
+    <string name="monday">Thứ hai</string>
+    <string name="monday_weather_condition">Khá nhiều mây</string>
+    <string name="monday_temp_interval">24 độ - 30 độ</string>
+    <string name="tuesday">Thứ ba</string>
+    <string name="tuesday_weather_condition">Mưa to</string>
+    <string name="tuesday_temp_interval">24 độ - 31 độ</string>
+    <string name="wednesday">Thứ tư</string>
+    <string name="wednesday_weather_condition">Mưa</string>
+    <string name="wednesday_temp_interval">22 độ - 23 độ</string>
+    <string name="thursday">Thứ năm</string>
+    <string name="thursday_weather_condition">Mưa giông</string>
+    <string name="thursday_temp_interval">24 độ - 27 độ</string>
+    <string name="friday">Thứ sáu</string>
+    <string name="friday_weather_condition">Trời toàn mây</string>
+    <string name="friday_temp_interval">22 độ - 30 độ</string>
+    <string name="saturday">Thứ bảy</string>
+    <string name="saturday_weather_condition">Nắng</string>
+    <string name="saturday_temp_interval">30 độ - 34 độ</string>
+    <string name="sunday">Chủ Nhật</string>
+    <string name="sunday_weather_condition">Nhiều mây</string>
+    <string name="sunday_temp_interval">24 độ - 31 độ</string>
+</resources>
