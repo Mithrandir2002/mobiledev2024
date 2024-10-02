@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -98,17 +99,29 @@ public class WeatherActivity extends AppCompatActivity {
             Thread t = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    try {
-                        Thread.sleep(5000);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("server_response", "some json here");
-                        Message msg = new Message();
-                        msg.setData(bundle);
-                        handler.sendMessage(msg);
+                    AsyncTask<Integer, Integer, String> task = new AsyncTask<Integer, Integer, String>() {
+                        @Override
+                        protected String doInBackground(Integer... integers) {
+                            try {
+                                Thread.sleep(integers[0]);
+                            } catch (InterruptedException e) {
+                                throw new RuntimeException(e);
+                            }
+                            return "do something........";
+                        }
 
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                        @Override
+                        protected void onPostExecute(String s) {
+                            super.onPostExecute(s);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("server_response", s);
+                            Message msg = new Message();
+                            msg.setData(bundle);
+                            handler.sendMessage(msg);
+
+                        }
+                    };
+                    task.execute(5000);
                 }
             });
             t.start();
