@@ -1,5 +1,7 @@
 package vn.edu.usth.usthweather;
 
+import static android.app.PendingIntent.getActivity;
+
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -8,6 +10,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
@@ -80,21 +85,42 @@ public class WeatherActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case 1000002:
-                // Show a toast message when Refresh is clicked
-                Toast.makeText(this, "Refreshing...", Toast.LENGTH_SHORT).show();
-                return true;
+        int id = item.getItemId();
+        if (id == R.id.action_refresh) {
+            final Handler handler = new Handler(Looper.getMainLooper()) {
+                @Override
+                public void handleMessage(Message msg) {
+                    String content = msg.getData().getString("server_response");
+                    Toast.makeText(WeatherActivity.this, content, Toast.LENGTH_SHORT).show();
+                }
+            };
 
-            case 1000007:
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(5000);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("server_response", "some json here");
+                        Message msg = new Message();
+                        msg.setData(bundle);
+                        handler.sendMessage(msg);
+
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            t.start();
+            return true;
+        }
+        if (id == R.id.action_settings) {
                 // Start the new PrefActivity when Settings is clicked
                 Intent intent = new Intent(this, PrefActivity.class);
                 startActivity(intent);
                 return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
         }
+        return false;
     }
 
 //    @RequiresApi(api = Build.VERSION_CODES.Q)
